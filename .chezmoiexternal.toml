@@ -1,0 +1,7 @@
+[".tmux/plugins/tpm"]
+type = 'git-repo'
+url = 'https://github.com/tmux-plugins/tpm'
+
+[".local/share/wezterm/vte.sh"]
+type = 'file'
+url = 'https://github.com/wez/wezterm/raw/main/assets/shell-integration/wezterm.sh'

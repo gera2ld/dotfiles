@@ -1,0 +1,9 @@
+/autoload
+/sessions
+.netrwhist
+/vimrc
+/poetry.lock
+.nvimlog
+/.vim
+node_modules/
+package-lock.json

@@ -1,0 +1,13 @@
+{
+  "name": "vimfiles",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "postinstall": "node index.mjs"
+  },
+  "dependencies": {
+    "neovim": "^4.10.1",
+    "which": "^4.0.0"
+  }
+}

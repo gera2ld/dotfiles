@@ -1,0 +1,51 @@
+{
+  "git.addGBlameToVirtualText": true,
+  "git.splitWindowCommand": "rightbelow vs",
+  "list.normalMappings": {
+    "t": "action:tabe",
+    "v": "action:vsplit",
+    "s": "action:split"
+  },
+  "list.insertMappings": {
+    "<C-t>": "action:tabe",
+    "<C-v>": "action:vsplit",
+    "<C-s>": "action:split",
+    "<C-w>": "command:wincmd k"
+  },
+  "pairs.disableLanguages": [
+    "svelte"
+  ],
+  "powershell.powerShellExePath": "pwsh",
+  "python.formatting.provider": "yapf",
+  "snippets.extends": {
+    "javascriptreact": [
+      "javascript"
+    ]
+  },
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "languageserver": {
+    "ocaml-lsp": {
+      "command": "opam",
+      "args": [
+        "config",
+        "exec",
+        "--",
+        "ocamllsp"
+      ],
+      "filetypes": [
+        "ocaml",
+        "reason"
+      ]
+    }
+  },
+  "svelte.enable-ts-plugin": true,
+  "svelte.plugin.svelte.format.config.singleQuote": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "snippets.ultisnips.pythonPrompt": false,
+  "volar.takeOverMode.enabled": true,
+  "go.goplsOptions": {
+    "staticcheck": true
+  }
+}

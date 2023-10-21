@@ -1,0 +1,13 @@
+" Path to Node.js
+let g:node_host_prog = '{{ .chezmoi.sourceDir }}/vimfiles/node_modules/.bin/neovim-node-host'
+let g:coc_node_path = expand('~/opt/node/current/bin/node')
+
+" Path to Python 3
+let g:python3_host_prog = '{{ .chezmoi.sourceDir }}/vimfiles/.venv/bin/python'
+" Disable Python 2
+let g:loaded_python_provider = 1
+
+se rtp+={{ .chezmoi.sourceDir }}/vimfiles
+exe 'se rtp+=' . expand('~/.vim')
+
+ru lib/index.vim
