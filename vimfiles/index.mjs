@@ -1,29 +1,13 @@
 import { spawn } from 'child_process';
-import { link, mkdir, readFile, rm, symlink, writeFile } from 'fs/promises';
+import { mkdir, readFile, writeFile } from 'fs/promises';
 import { homedir, platform } from 'os';
 import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
 import which from 'which';
 
 const isWin = platform() === 'win32';
 const dotVim = join(homedir(), '.vim');
 const configRoot = join(homedir(), isWin ? 'AppData/Local' : '.config');
-const uniLink = isWin ? link : symlink;
 let vimExe;
-
-// Vim in Windows does not support `\\`
-function normalizePath(path) {
-  return path.replace(/\\/g, '/');
-}
-
-async function linkForce(src, dst) {
-  try {
-    await rm(dst);
-  } catch {
-    // ignore
-  }
-  await uniLink(src, dst);
-}
 
 async function runCommand(cmd, args, opts) {
   const p = spawn(cmd, args, { stdio: 'inherit', ...opts });

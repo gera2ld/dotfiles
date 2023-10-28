@@ -7,6 +7,8 @@ let g:python3_host_prog = '{{ .chezmoi.sourceDir }}/vimfiles/.venv/bin/python'
 " Disable Python 2
 let g:loaded_python_provider = 1
 
+let g:enable_treesitter = has('nvim-0.9.1') && 1
+
 se rtp+={{ .chezmoi.sourceDir }}/vimfiles
 exe 'se rtp+=' . expand('~/.vim')
 

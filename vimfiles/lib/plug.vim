@@ -1,5 +1,3 @@
-" let s:enable_treesitter = has('nvim-0.7') && $ENABLE_TREESITTER
-
 let s:plugged = expand('~/.vim/plugged')
 call plug#begin(s:plugged)
 
@@ -70,9 +68,9 @@ Plug 'liuchengxu/vista.vim'
 " languages
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sheerun/vim-polyglot'
-" if s:enable_treesitter
-"   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" endif
+if g:enable_treesitter
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+endif
 
 " UI
 Plug 'itchyny/lightline.vim'
@@ -147,30 +145,30 @@ let g:vim_svelte_plugin_use_typescript = 1
 " }}}
 
 " treesitter {{{
-" if s:enable_treesitter
-" lua << EOF
-"   require'nvim-treesitter.configs'.setup {
-"     -- A list of parser names, or "all"
-"     ensure_installed = "all",
-" 
-"     -- Install parsers synchronously (only applied to `ensure_installed`)
-"     sync_install = false,
-" 
-"     -- List of parsers to ignore installing (for "all")
-"     ignore_install = { },
-" 
-"     highlight = {
-"       enable = true,
-"       disable = { 'markdown' },
-"       additional_vim_regex_highlighting = false,
-"     },
-" 
-"     indent = {
-"       enable = true,
-"     },
-"   }
-" EOF
-" endif
+if g:enable_treesitter
+lua << EOF
+  require'nvim-treesitter.configs'.setup {
+    -- A list of parser names, or "all"
+    ensure_installed = { "typescript" },
+
+    -- Install parsers synchronously (only applied to `ensure_installed`)
+    sync_install = false,
+
+    -- List of parsers to ignore installing (for "all")
+    ignore_install = { },
+
+    highlight = {
+      enable = true,
+      disable = { 'markdown' },
+      additional_vim_regex_highlighting = false,
+    },
+
+    indent = {
+      enable = true,
+    },
+  }
+EOF
+endif
 " }}}
 
 " lightline {{{
