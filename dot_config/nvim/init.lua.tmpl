@@ -1,0 +1,45 @@
+-- Path to Node.js
+vim.g.node_host_prog = '{{ .chezmoi.sourceDir }}/vimfiles/node_modules/.bin/neovim-node-host'
+vim.g.coc_node_path = vim.fn.expand '~/opt/node/current/bin/node'
+
+-- Path to Python 3
+-- vim.g.python3_host_prog = '{{ .chezmoi.sourceDir }}/vimfiles/.venv/bin/python'
+-- Disable Python 2
+-- vim.g.loaded_python_provider = 1
+
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    '--single-branch',
+    'https://github.com/folke/lazy.nvim.git',
+    lazypath,
+  }
+end
+vim.opt.runtimepath:prepend(lazypath)
+
+require('lazy').setup('plugins', {
+  defaults = { lazy = true },
+  performance = {
+    cache = { enabled = true },
+    rtp = {
+      disabled_plugins = {
+        'gzip',
+        'matchit',
+        'matchparen',
+        'netrwPlugin',
+        'rplugin',
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zipPlugin',
+      },
+    },
+  },
+})
+
+require 'options'
+require 'keymaps'
+require 'coc'
