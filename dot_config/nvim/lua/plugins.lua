@@ -259,7 +259,16 @@ return {
         return
       end
       url_open.setup ({
-        deep_pattern = true,
+        extra_patterns = {
+          -- Markdown autolinks
+          {
+            pattern = '<([%a%-]*:[^%s]*)>',
+          },
+          -- Org mode links
+          {
+            pattern = '%[%[(.*)%]%[.*%]%]',
+          },
+        },
       })
     end,
   },
