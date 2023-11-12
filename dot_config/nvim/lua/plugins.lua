@@ -282,4 +282,9 @@ return {
       require('mini.splitjoin').setup { mappings = { toggle = 'gJ' } }
     end,
   },
+  {
+    "uga-rosa/translate.nvim",
+    opts = {},
+    event = 'VeryLazy',
+  },
 }
