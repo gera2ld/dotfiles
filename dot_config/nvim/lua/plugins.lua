@@ -75,20 +75,6 @@ return {
     event = 'BufReadPost',
   },
   {
-    'lewis6991/hover.nvim',
-    event = 'BufReadPost',
-    config = function()
-      require('hover').setup {
-        init = function()
-          require 'hover.providers.lsp'
-        end,
-      }
-
-      vim.keymap.set('n', 'K', require('hover').hover, { desc = 'hover.nvim' })
-      vim.keymap.set('n', 'gK', require('hover').hover_select, { desc = 'hover.nvim (select)' })
-    end,
-  },
-  {
     'DNLHC/glance.nvim',
     cmd = 'Glance',
     config = function()
@@ -167,6 +153,7 @@ return {
         'coc-yank',
         'coc-zls',
       }
+      require 'coc'
     end,
     lazy = false,
   },
