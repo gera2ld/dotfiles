@@ -6,6 +6,7 @@ vim.keymap.set('i', '<c-u>', '<c-g>u<c-u>', silent)
 
 vim.keymap.set('n', '<leader>ff', '<cmd>FzfLua files<cr>', silent)
 vim.keymap.set('n', '<leader>fg', ':silent lgrep<space>')
+vim.keymap.set('n', 'g*', ":silent lgrep <c-r>=expand('<cword>')<cr> | lopen<cr>")
 
 vim.keymap.set('n', '<leader>h', '<cmd>HopWord<cr>', silent)
 
