@@ -1,6 +1,6 @@
 -- Path to Node.js
 vim.g.node_host_prog = '{{ .chezmoi.sourceDir }}/vimfiles/node_modules/.bin/neovim-node-host'
-vim.g.coc_node_path = vim.fn.expand '~/opt/node/current/bin/node'
+vim.g.coc_node_path = vim.fn.expand {{ .nodePath | quote }}
 
 -- Path to Python 3
 -- vim.g.python3_host_prog = '{{ .chezmoi.sourceDir }}/vimfiles/.venv/bin/python'
