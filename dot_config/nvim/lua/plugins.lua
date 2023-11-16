@@ -316,4 +316,8 @@ return {
       })
     end,
   },
+  {
+    'lambdalisue/suda.vim',
+    event = 'VeryLazy',
+  },
 }
