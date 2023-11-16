@@ -98,6 +98,16 @@ return {
       "MunifTanjim/nui.nvim",
       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
+    opts = {
+      window = {
+        mappings = {
+          ["-"] = function(state)
+            local node = state.tree:get_node()
+            require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
+          end
+        },
+      },
+    },
   },
   -- {
   --   "nvim-neorg/neorg",
