@@ -148,7 +148,6 @@ return {
         'coc-deno',
         'coc-emmet',
         'coc-eslint',
-        'coc-floaterm',
         'coc-format-json',
         'coc-git',
         'coc-go',
