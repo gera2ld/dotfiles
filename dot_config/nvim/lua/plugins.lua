@@ -330,4 +330,8 @@ return {
     'lambdalisue/suda.vim',
     event = 'VeryLazy',
   },
+  {
+    'NoahTheDuke/vim-just',
+    event = 'VeryLazy',
+  },
 }
