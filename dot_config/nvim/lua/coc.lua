@@ -84,10 +84,10 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-  group = "CocGroup",
-  pattern = "*.go,*.python",
-  command = "silent! CocCommand editor.action.organizeImport",
-  desc = "Organize import before saving"
+    group = "CocGroup",
+    pattern = "*.go,*.python",
+    command = "call CocAction('runCommand', 'editor.action.organizeImport')",
+    desc = "Organize import before saving"
 })
 
 -- Apply codeAction to the selected region
