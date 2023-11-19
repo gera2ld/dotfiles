@@ -213,8 +213,8 @@ return {
   {
     'akinsho/toggleterm.nvim',
     version = '*',
-    opts = { open_mapping = [[<c-\>]], direction = 'float' },
-    keys = [[<c-\>]],
+    opts = { open_mapping = [[<c-/>]], direction = 'float' },
+    keys = [[<c-/>]],
   },
   {
     'willothy/flatten.nvim',
