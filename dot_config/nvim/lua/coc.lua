@@ -30,6 +30,8 @@ keyset("n", "]g", "<Plug>(coc-diagnostic-next)", {silent = true})
 
 -- GoTo code navigation
 keyset("n", "gd", "<Plug>(coc-definition)", {silent = true})
+keyset("n", "<leader>wgd", "<cmd>call CocActionAsync('jumpDefinition', 'tabe')<cr>", {silent = true})
+keyset("n", "<leader>vgd", "<cmd>call CocActionAsync('jumpDefinition', 'vs')<cr>", {silent = true})
 keyset("n", "gy", "<Plug>(coc-type-definition)", {silent = true})
 keyset("n", "gi", "<Plug>(coc-implementation)", {silent = true})
 keyset("n", "gr", "<Plug>(coc-references)", {silent = true})
