@@ -21,3 +21,6 @@ vim.opt.laststatus = 3
 
 vim.opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
 vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'
+
+-- disable default markdown style
+vim.g.markdown_recommended_style = 0
