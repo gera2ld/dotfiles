@@ -152,7 +152,7 @@ return {
         'coc-lists',
         'coc-markmap',
         'coc-pairs',
-        'coc-powershell',
+        -- 'coc-powershell', -- too large, > 300MB
         'coc-prettier',
         'coc-pyright',
         'coc-reveal',
