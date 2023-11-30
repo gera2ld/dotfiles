@@ -88,7 +88,7 @@ vim.api.nvim_create_autocmd("User", {
 vim.api.nvim_create_autocmd("BufWritePre", {
     group = "CocGroup",
     pattern = "*.go,*.python",
-    command = "call CocAction('runCommand', 'editor.action.organizeImport')",
+    command = "silent! call CocAction('runCommand', 'editor.action.organizeImport')",
     desc = "Organize import before saving"
 })
 
@@ -179,3 +179,5 @@ keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
 keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
 -- Resume latest coc list
 keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
+-- Yank list
+keyset("n", "<space>y", ":<C-u>CocList yank<cr>", opts)
