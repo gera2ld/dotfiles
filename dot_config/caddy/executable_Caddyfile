@@ -1,0 +1,8 @@
+{
+	servers {
+		trusted_proxies static private_ranges
+	}
+}
+
+import common
+import sites/*
