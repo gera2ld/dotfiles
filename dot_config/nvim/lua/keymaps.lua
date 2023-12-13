@@ -24,6 +24,6 @@ autocmd("QuickFixCmdPost", {
 
 vim.keymap.set('n', '<leader>h', '<cmd>HopWord<cr>', silent)
 
-vim.keymap.set("n", "gx", "<esc>:URLOpenUnderCursor<cr>", silent)
+vim.keymap.set("n", "gx", "<cmd>URLOpenUnderCursor<cr>", silent)
 
-vim.keymap.set("n", '-', '<cmd>Neotree reveal=true<cr>', silent)
+vim.keymap.set("n", '-', '<cmd>NvimTreeFindFile<cr>', silent)
