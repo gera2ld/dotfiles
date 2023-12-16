@@ -1,0 +1,14 @@
+# https://github.com/artempyanykh/marksman/blob/main/Tests/default.marksman.toml
+
+[core]
+markdown.file_extensions = ["md", "markdown"]
+text_sync = "full"
+incremental_references = false
+paranoid = false
+
+[code_action]
+toc.enable = true
+create_missing_file.enable = true
+
+[completion]
+wiki.style = "file-stem"
