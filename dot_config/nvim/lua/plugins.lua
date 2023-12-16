@@ -90,7 +90,11 @@ return {
   {
     'nvim-tree/nvim-tree.lua',
     cmd = { 'NvimTreeOpen', 'NvimTreeFindFile' },
-    opts = {},
+    opts = {
+      git = {
+        ignore = false,
+      },
+    },
   },
   {
     "neoclide/coc.nvim",
