@@ -22,8 +22,6 @@
       "javascript"
     ]
   },
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "languageserver": {
     "ocaml-lsp": {
       "command": "opam",
@@ -47,5 +45,8 @@
   "volar.takeOverMode.enabled": true,
   "go.goplsOptions": {
     "staticcheck": true
+  },
+  "hover.floatConfig": {
+    "border": true
   }
 }
