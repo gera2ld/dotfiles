@@ -295,4 +295,14 @@ return {
     'NoahTheDuke/vim-just',
     event = 'VeryLazy',
   },
+  {
+    'gera2ld/ai.nvim',
+    dependencies = 'nvim-lua/plenary.nvim',
+    opts = {
+      api_key = os.getenv('GEMINI_API_KEY'),
+      locale = 'en',
+      alternate_locale = 'zh',
+    },
+    cmd = { 'GeminiDefine', 'GeminiDefineV', 'GeminiTranslate', 'GeminiAsk' },
+  },
 }
