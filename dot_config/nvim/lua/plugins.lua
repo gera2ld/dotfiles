@@ -115,6 +115,7 @@ return {
         'coc-jest',
         'coc-json',
         'coc-lists',
+        'coc-lua',
         'coc-markmap',
         'coc-pairs',
         -- 'coc-powershell', -- too large, > 300MB
@@ -252,11 +253,6 @@ return {
       require('mini.move').setup {}
       require('mini.splitjoin').setup { mappings = { toggle = 'gJ' } }
     end,
-  },
-  {
-    "uga-rosa/translate.nvim",
-    opts = {},
-    event = 'VeryLazy',
   },
   {
     'lukas-reineke/headlines.nvim',
