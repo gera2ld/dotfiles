@@ -48,5 +48,6 @@
   },
   "hover.floatConfig": {
     "border": true
-  }
+  },
+  "Lua.diagnostics.globals": ["vim"]
 }
