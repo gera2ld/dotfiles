@@ -94,6 +94,9 @@ return {
       git = {
         ignore = false,
       },
+      update_focused_file = {
+        update_root = true,
+      },
     },
   },
   {
