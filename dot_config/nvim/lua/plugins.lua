@@ -296,7 +296,7 @@ return {
   },
   {
     'NoahTheDuke/vim-just',
-    event = 'VeryLazy',
+    lazy = false,
   },
   {
     'gera2ld/ai.nvim',
