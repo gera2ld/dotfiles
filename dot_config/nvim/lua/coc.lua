@@ -85,13 +85,6 @@ vim.api.nvim_create_autocmd("User", {
     desc = "Update signature help on jump placeholder"
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-    group = "CocGroup",
-    pattern = "*.go,*.py",
-    command = "silent! call CocAction('runCommand', 'editor.action.organizeImport') | silent! call CocAction('format')",
-    desc = "Organize import before saving"
-})
-
 -- Apply codeAction to the selected region
 -- Example: `<leader>aap` for current paragraph
 local opts = {silent = true, nowait = true}
