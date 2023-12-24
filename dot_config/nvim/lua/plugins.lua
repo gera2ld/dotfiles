@@ -15,7 +15,7 @@ return {
     config = function()
       require'nvim-treesitter.configs'.setup {
         -- A list of parser names, or "all"
-        ensure_installed = { "typescript", "norg", "vim", "lua" },
+        ensure_installed = { "typescript", "norg", "vim", "lua", "astro" },
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
         sync_install = false,
@@ -104,6 +104,7 @@ return {
     branch = "release",
     config = function()
       vim.g.coc_global_extensions = {
+        '@yaegassy/coc-astro',
         '@yaegassy/coc-marksman',
         '@yaegassy/coc-volar', -- deprecate 'coc-vetur'
         'coc-css',
@@ -306,6 +307,6 @@ return {
       locale = 'en',
       alternate_locale = 'zh',
     },
-    cmd = { 'GeminiDefine', 'GeminiDefineV', 'GeminiTranslate', 'GeminiAsk' },
+    event = 'VeryLazy',
   },
 }
