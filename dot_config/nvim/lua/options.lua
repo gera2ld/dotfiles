@@ -1,6 +1,5 @@
 vim.opt.cursorline = true
 vim.opt.mouse = 'nivh'
-vim.opt.textwidth = 100
 vim.opt.smartindent = true
 vim.opt.fileencodings = {'ucs-bom', 'utf-8', 'cp936'}
 vim.opt.backup = false
