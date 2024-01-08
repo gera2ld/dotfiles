@@ -13,7 +13,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-      require'nvim-treesitter.configs'.setup {
+      require 'nvim-treesitter.configs'.setup {
         -- A list of parser names, or "all"
         ensure_installed = { "typescript", "norg", "vim", "lua", "astro" },
 
@@ -21,11 +21,11 @@ return {
         sync_install = false,
 
         -- List of parsers to ignore installing (for "all")
-        ignore_install = { },
+        ignore_install = {},
 
         highlight = {
           enable = true,
-          disable = function (lang, buf)
+          disable = function(lang, buf)
             local max_filesize = 100 * 1024
             local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
             if ok and stats and stats.size > max_filesize then
@@ -57,16 +57,6 @@ return {
   {
     'sindrets/diffview.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
-  },
-  {
-    "NeogitOrg/neogit",
-    opts = {},
-    cmd = 'Neogit',
-    dependencies = {
-      "nvim-lua/plenary.nvim",         -- required
-      "sindrets/diffview.nvim",        -- optional
-      "ibhagwan/fzf-lua",              -- optional
-    },
   },
   {
     'akinsho/git-conflict.nvim',
@@ -148,11 +138,6 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = 'FzfLua',
   },
-  -- {
-  --   "folke/neodev.nvim",
-  --   ft = 'lua',
-  --   opts = {},
-  -- },
   {
     'NvChad/nvim-colorizer.lua',
     ft = { 'css', 'javascript', 'vim', 'html', 'lua' },
@@ -183,8 +168,22 @@ return {
   {
     'akinsho/toggleterm.nvim',
     version = '*',
-    opts = { open_mapping = [[<c-/>]], direction = 'float' },
-    keys = [[<c-/>]],
+    config = function()
+      require('toggleterm').setup {
+        open_mapping = [[<c-/>]],
+        direction = 'float',
+      }
+
+      local Terminal = require('toggleterm.terminal').Terminal
+      local tig      = Terminal:new({ cmd = 'tig', count = 9 })
+
+      function __TigToggle()
+        tig:toggle()
+      end
+
+      vim.api.nvim_set_keymap('n', '<leader>g', '<cmd>lua __TigToggle()<CR>', { noremap = true, silent = true })
+    end,
+    keys = { '<c-/>', '<leader>g' },
   },
   {
     'willothy/flatten.nvim',
@@ -225,7 +224,7 @@ return {
       if not status_ok then
         return
       end
-      url_open.setup ({
+      url_open.setup({
         extra_patterns = {
           -- Markdown autolinks
           {
@@ -268,7 +267,7 @@ return {
     'nvim-orgmode/orgmode',
     dependencies = {
       { 'nvim-treesitter/nvim-treesitter', lazy = true },
-      { 'akinsho/org-bullets.nvim', opts = {} },
+      { 'akinsho/org-bullets.nvim',        opts = {} },
     },
     event = 'VeryLazy',
     config = function()
