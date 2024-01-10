@@ -178,6 +178,10 @@ return {
       local tig      = Terminal:new({ cmd = 'tig', count = 9 })
 
       function __TigToggle()
+        local cwd = vim.fn.expand('%:p:h')
+        if vim.fn.isdirectory(cwd) ~= 0 then
+          tig.dir = cwd
+        end
         tig:toggle()
       end
 
