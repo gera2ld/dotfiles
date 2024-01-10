@@ -87,6 +87,14 @@ return {
       update_focused_file = {
         update_root = true,
       },
+      -- https://github.com/nvim-tree/nvim-tree.lua/issues/2438#issuecomment-1848866750
+      filesystem_watchers = {
+        enable = true,
+        debounce_delay = 50,
+        ignore_dirs = {
+          "node_modules"
+        },
+      },
     },
   },
   {
