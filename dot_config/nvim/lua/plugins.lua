@@ -127,7 +127,7 @@ return {
         'coc-rls',
         'coc-snippets',
         'coc-svelte',
-        -- 'coc-tsserver', -- disabled in favor of coc-volar
+        'coc-tsserver',
         'coc-yank',
         'coc-zls',
       }
