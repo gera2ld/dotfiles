@@ -1,4 +1,5 @@
 {
+  "deno.documentPreloadLimit": 0,
   "git.addGBlameToVirtualText": true,
   "git.splitWindowCommand": "rightbelow vs",
   "list.normalMappings": {
@@ -12,29 +13,17 @@
     "<C-s>": "action:split",
     "<C-w>": "command:wincmd k"
   },
-  "pairs.disableLanguages": [
-    "svelte"
-  ],
+  "pairs.disableLanguages": ["svelte"],
   "powershell.powerShellExePath": "pwsh",
   "python.formatting.provider": "yapf",
   "snippets.extends": {
-    "javascriptreact": [
-      "javascript"
-    ]
+    "javascriptreact": ["javascript"]
   },
   "languageserver": {
     "ocaml-lsp": {
       "command": "opam",
-      "args": [
-        "config",
-        "exec",
-        "--",
-        "ocamllsp"
-      ],
-      "filetypes": [
-        "ocaml",
-        "reason"
-      ]
+      "args": ["config", "exec", "--", "ocamllsp"],
+      "filetypes": ["ocaml", "reason"]
     }
   },
   "svelte.enable-ts-plugin": true,
@@ -42,7 +31,6 @@
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
   "snippets.ultisnips.pythonPrompt": false,
-  "volar.takeOverMode.enabled": true,
   "go.goplsOptions": {
     "staticcheck": true
   },
