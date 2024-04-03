@@ -305,7 +305,9 @@ return {
     'gera2ld/ai.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
     opts = {
-      api_key = os.getenv('GEMINI_API_KEY'),
+      gemini = {
+        api_key = os.getenv('GEMINI_API_KEY'),
+      },
       locale = 'en',
       alternate_locale = 'zh',
     },
