@@ -15,7 +15,7 @@ return {
     config = function()
       require 'nvim-treesitter.configs'.setup {
         -- A list of parser names, or "all"
-        ensure_installed = { "typescript", "norg", "vim", "lua", "astro" },
+        ensure_installed = { "typescript", "svelte", "vim", "lua", "astro" },
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
         sync_install = false,
@@ -183,7 +183,7 @@ return {
       }
 
       local Terminal = require('toggleterm.terminal').Terminal
-      local tig      = Terminal:new({ cmd = 'tig', count = 9 })
+      local tig      = Terminal:new({ cmd = 'tig --submodule=diff', count = 9 })
 
       function __TigToggle()
         local cwd = vim.fn.expand('%:p:h')
