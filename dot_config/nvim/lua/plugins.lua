@@ -153,19 +153,23 @@ return {
   },
   {
     'stevearc/aerial.nvim',
-    opts = {
-      backends = { 'lsp', 'treesitter', 'markdown', 'man' },
-      on_attach = function(bufnr)
-        vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', { buffer = bufnr })
-        vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', { buffer = bufnr })
-      end,
-    },
-    -- Optional dependencies
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
-    },
-    cmd = { 'AerialOpen', 'AerialToggle' },
+    event = "VeryLazy",
+    config = function()
+      require('aerial').setup({
+        backends = { 'lsp', 'treesitter', 'markdown', 'man' },
+        on_attach = function(bufnr)
+          vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', { buffer = bufnr })
+          vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', { buffer = bufnr })
+        end,
+        -- Optional dependencies
+        dependencies = {
+          "nvim-treesitter/nvim-treesitter",
+          "nvim-tree/nvim-web-devicons"
+        },
+        cmd = { 'AerialOpen', 'AerialToggle' },
+      })
+      vim.keymap.set('n', '<space>o', '<cmd>AerialOpen<CR>', { silent = true, nowait = true })
+    end,
   },
   {
     'folke/todo-comments.nvim',
