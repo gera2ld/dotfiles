@@ -305,13 +305,19 @@ return {
   {
     'gera2ld/ai.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
-    opts = {
-      gemini = {
-        api_key = os.getenv('GEMINI_API_KEY'),
-      },
-      locale = 'en',
-      alternate_locale = 'zh',
-    },
+    config = function()
+      require('ai').setup(
+        require('ai.util').merge(
+          {
+            locale = 'en',
+            alternate_locale = 'zh',
+            prompts = {},
+          },
+          -- API keys and relavant config stored in an environment variable
+          vim.fn.json_decode(os.getenv('AI_NVIM_PROVIDER_CONFIG'))
+        )
+      )
+    end,
     event = 'VeryLazy',
   },
   {
