@@ -193,6 +193,8 @@ return {
         local cwd = vim.fn.expand('%:p:h')
         if vim.fn.isdirectory(cwd) ~= 0 then
           tig.dir = cwd
+        else
+          tig.dir = nil
         end
         tig:toggle()
       end
