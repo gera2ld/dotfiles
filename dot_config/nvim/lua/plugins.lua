@@ -308,13 +308,10 @@ return {
     'gera2ld/ai.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
     config = function()
-      require('ai').setup(
-        require('ai.util').merge(
-          {
-            locale = 'en',
-            alternate_locale = 'zh',
-            prompts = {},
-          },
+      local ai = require('ai')
+      ai.setup(
+        ai.util.assign(
+          {},
           -- API keys and relavant config stored in an environment variable
           vim.fn.json_decode(os.getenv('AI_NVIM_PROVIDER_CONFIG'))
         )
