@@ -15,7 +15,14 @@ return {
     config = function()
       require 'nvim-treesitter.configs'.setup {
         -- A list of parser names, or "all"
-        ensure_installed = { "typescript", "svelte", "vim", "lua", "astro" },
+        ensure_installed = {
+          'astro',
+          'lua',
+          'svelte',
+          'typescript',
+          'vim',
+          'vue',
+        },
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
         sync_install = false,
