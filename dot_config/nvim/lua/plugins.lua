@@ -316,13 +316,8 @@ return {
     dependencies = 'nvim-lua/plenary.nvim',
     config = function()
       local ai = require('ai')
-      ai.setup(
-        ai.util.assign(
-          {},
-          -- API keys and relavant config stored in an environment variable
-          vim.fn.json_decode(os.getenv('AI_NVIM_PROVIDER_CONFIG'))
-        )
-      )
+      local ok, opts = pcall(vim.fn.json_decode, os.getenv('AI_NVIM_PROVIDER_CONFIG'))
+      ai.setup(ok and opts or {})
     end,
     event = 'VeryLazy',
   },
