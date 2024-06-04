@@ -1,7 +1,7 @@
 vim.opt.cursorline = true
 vim.opt.mouse = 'nivh'
 vim.opt.smartindent = true
-vim.opt.fileencodings = {'ucs-bom', 'utf-8', 'cp936'}
+vim.opt.fileencodings = { 'ucs-bom', 'utf-8', 'cp936' }
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.number = true
@@ -19,8 +19,8 @@ vim.opt.undofile = true
 vim.opt.laststatus = 3
 vim.opt.conceallevel = 2
 
-vim.opt.grepprg = 'rg --vimgrep --no-heading --smart-case --hidden --follow -g "!.git"'
-vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'
-
 -- disable default markdown style
 vim.g.markdown_recommended_style = 0
+
+-- vim.opt.grepprg = 'rg --vimgrep --no-heading --smart-case --hidden --follow -g "!.git"'
+-- vim.opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'
