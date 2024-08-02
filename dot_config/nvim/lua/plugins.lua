@@ -133,7 +133,6 @@ return {
         'coc-reveal',
         'coc-rls',
         'coc-snippets',
-        'coc-svelte',
         'coc-tsserver',
         'coc-yank',
         'coc-zls',
