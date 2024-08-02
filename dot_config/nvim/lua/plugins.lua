@@ -131,12 +131,11 @@ return {
         'coc-prettier',
         'coc-pyright',
         'coc-reveal',
-        'coc-rls',
+        -- 'coc-rls',
         'coc-snippets',
-        'coc-svelte',
         'coc-tsserver',
         'coc-yank',
-        'coc-zls',
+        -- 'coc-zls',
       }
       require 'coc'
     end,
@@ -312,12 +311,35 @@ return {
     lazy = false,
   },
   {
-    'gera2ld/ai.nvim',
+    'gera2ld/remotely.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
     config = function()
-      local ai = require('ai')
-      local ok, opts = pcall(vim.fn.json_decode, os.getenv('AI_NVIM_PROVIDER_CONFIG'))
-      ai.setup(ok and opts or {})
+      local r = require('remotely')
+      local setup = function(name)
+        return {
+          url = os.getenv('REMOTELY_HANDLER_URL'),
+          curlOpts = { '-H', 'content-type: application/json' },
+          preprocess = function(_, args)
+            return {
+              body = {
+                prompt = name,
+                input = args.input,
+              },
+            }
+          end,
+          postprocess = function(_, data)
+            return data.text
+          end,
+        }
+      end
+      local handlerList = r.util.split(os.getenv('REMOTELY_HANDLER_LIST'), ' ')
+      local handlers = {}
+      for _, name in ipairs(handlerList) do
+        handlers[name] = setup(name)
+      end
+      r.setup({
+        handlers = handlers,
+      })
     end,
     event = 'VeryLazy',
   },

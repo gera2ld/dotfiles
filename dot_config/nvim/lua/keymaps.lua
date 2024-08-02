@@ -1,5 +1,5 @@
-local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
-local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
+local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group
+local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 local silent = { silent = true, noremap = true }
 
 -- CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
@@ -8,22 +8,26 @@ vim.keymap.set('i', '<c-u>', '<c-g>u<c-u>', silent)
 
 vim.keymap.set('n', '<leader>ff', '<cmd>FzfLua files<cr>', silent)
 
+vim.keymap.set('n', '<leader>w', '<c-w>')
+
 augroup('QuickfixWindows', {})
 autocmd("QuickFixCmdPost", {
-  group='QuickfixWindows',
-  pattern='[^l]*',
-  command='cwindow',
+  group = 'QuickfixWindows',
+  pattern = '[^l]*',
+  command = 'cwindow',
 })
 autocmd("QuickFixCmdPost", {
-  group='QuickfixWindows',
-  pattern='l*',
-  command='lwindow',
+  group = 'QuickfixWindows',
+  pattern = 'l*',
+  command = 'lwindow',
 })
 
 vim.keymap.set("n", '-', '<cmd>NvimTreeFindFile<cr>', silent)
 
-vim.keymap.set('n', '<leader>ss', ":silent! call CocAction('runCommand', 'editor.action.organizeImport') | silent! call CocAction('format') | w<cr>")
-vim.keymap.set('n', '<leader>sq', ":silent! call CocAction('runCommand', 'editor.action.organizeImport') | silent! call CocAction('format') | wq<cr>")
+vim.keymap.set('n', '<leader>ss',
+  ":silent! call CocAction('runCommand', 'editor.action.organizeImport') | silent! call CocAction('format') | w<cr>")
+vim.keymap.set('n', '<leader>sq',
+  ":silent! call CocAction('runCommand', 'editor.action.organizeImport') | silent! call CocAction('format') | wq<cr>")
 
 vim.api.nvim_create_user_command('Search', function(opts)
   local lines = vim.fn.systemlist('rg --vimgrep --no-heading --smart-case --hidden --follow -g "!.git" ' .. opts.args)

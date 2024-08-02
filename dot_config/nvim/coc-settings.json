@@ -24,6 +24,12 @@
       "command": "opam",
       "args": ["config", "exec", "--", "ocamllsp"],
       "filetypes": ["ocaml", "reason"]
+    },
+    "svelte": {
+      "command": "svelteserver",
+      "args": ["--stdio"],
+      "rootPatterns": ["package.json", ".git", ".editorconfig"],
+      "filetypes": ["svelte"]
     }
   },
   "svelte.enable-ts-plugin": true,
