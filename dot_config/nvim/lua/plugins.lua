@@ -131,11 +131,11 @@ return {
         'coc-prettier',
         'coc-pyright',
         'coc-reveal',
-        'coc-rls',
+        -- 'coc-rls',
         'coc-snippets',
         'coc-tsserver',
         'coc-yank',
-        'coc-zls',
+        -- 'coc-zls',
       }
       require 'coc'
     end,
