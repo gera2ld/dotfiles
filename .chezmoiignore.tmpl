@@ -1,5 +1,7 @@
 *.md
+
 {{- if ne .chezmoi.hostname "m9" }}
-/.config/apprise
-/init-denv.sh
 {{- end}}
+
+{{- if eq .type "other" }}
+{{- end }}

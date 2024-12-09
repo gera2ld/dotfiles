@@ -2,8 +2,9 @@ local wezterm = require 'wezterm';
 
 local config = {
   hide_tab_bar_if_only_one_tab = true,
+  color_scheme = 'Tokyo Night',
   font = wezterm.font('Cascadia Code PL'),
-  leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 },
+  leader = { key = ']', mods = 'CTRL', timeout_milliseconds = 1000 },
   keys = {
     {
       key = '%',
@@ -15,12 +16,6 @@ local config = {
       mods = 'LEADER|SHIFT',
       action = wezterm.action.SplitVertical,
     },
-    -- Send `c-a` to the terminal when pressing `c-a c-a`
-    {
-      key = 'a',
-      mods = 'LEADER|CTRL',
-      action = wezterm.action.SendKey { key = 'a', mods = 'CTRL' },
-    },
     {
       key = 'x',
       mods = 'LEADER',
@@ -30,6 +25,21 @@ local config = {
       key = 'w',
       mods = 'CMD',
       action = wezterm.action.CloseCurrentPane { confirm = true },
+    },
+    {
+      key = 'LeftArrow',
+      mods = 'SUPER|SHIFT',
+      action = wezterm.action.MoveTabRelative(-1),
+    },
+    {
+      key = 'RightArrow',
+      mods = 'SUPER|SHIFT',
+      action = wezterm.action.MoveTabRelative(1),
+    },
+    {
+      key = '9',
+      mods = 'LEADER',
+      action = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES' },
     },
   },
 }

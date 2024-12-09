@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-set -e
-
-# denv.db hash: {{ gopass "denv" | sha256sum }}
-
-DENV_DB=~/.config/denv.db
-rm -f $DENV_DB
-gopass show denv | sqlite3 $DENV_DB

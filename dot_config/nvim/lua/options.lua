@@ -17,7 +17,6 @@ vim.opt.list = true
 vim.opt.diffopt:append 'iwhite'
 vim.opt.undofile = true
 vim.opt.laststatus = 3
-vim.opt.conceallevel = 2
 
 -- disable default markdown style
 vim.g.markdown_recommended_style = 0

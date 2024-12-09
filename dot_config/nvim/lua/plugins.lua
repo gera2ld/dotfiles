@@ -1,4 +1,6 @@
 -- based on https://github.com/wbthomason/dotfiles
+local is_private = os.getenv('MACHINE_TYPE') == 'private'
+
 return {
   {
     "folke/tokyonight.nvim",
@@ -8,45 +10,6 @@ return {
       vim.cmd([[colorscheme tokyonight]])
     end,
     lazy = false,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function()
-      require 'nvim-treesitter.configs'.setup {
-        -- A list of parser names, or "all"
-        ensure_installed = {
-          'astro',
-          'lua',
-          'svelte',
-          'typescript',
-          'vim',
-          'vue',
-        },
-
-        -- Install parsers synchronously (only applied to `ensure_installed`)
-        sync_install = false,
-
-        -- List of parsers to ignore installing (for "all")
-        ignore_install = {},
-
-        highlight = {
-          enable = true,
-          disable = function(_lang, buf)
-            local max_filesize = 100 * 1024
-            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-            if ok and stats and stats.size > max_filesize then
-              return true
-            end
-          end,
-          additional_vim_regex_highlighting = false,
-        },
-
-        indent = {
-          enable = true,
-        },
-      }
-    end,
   },
   { 'chaoren/vim-wordmotion', event = 'VeryLazy' },
   {
@@ -74,15 +37,6 @@ return {
   {
     'DNLHC/glance.nvim',
     cmd = 'Glance',
-    config = function()
-      require('glance').setup {
-        detached = true,
-        border = { enable = true, top_char = '─', bottom_char = '─' },
-        theme = { mode = 'brighten' },
-        indent_lines = { icon = '│' },
-        winbar = { enable = true },
-      }
-    end,
   },
   {
     'nvim-tree/nvim-tree.lua',
@@ -103,7 +57,35 @@ return {
         },
       },
     },
+    init = function()
+      vim.keymap.set("n", '-', '<cmd>NvimTreeFindFile<cr>', { silent = true, noremap = true })
+    end,
   },
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   branch = "v3.x",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+  --     "MunifTanjim/nui.nvim",
+  --     -- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
+  --   },
+  --   lazy = false, -- neo-tree will lazily load itself
+  --   ---@module "neo-tree"
+  --   ---@type neotree.Config?
+  --   opts = {
+  --     filesystem = {
+  --       filtered_items = {
+  --         visible = false,
+  --         hide_dotfiles = false,
+  --         hide_gitignored = true,
+  --       },
+  --     },
+  --   },
+  --   init = function()
+  --     vim.keymap.set("n", '-', '<cmd>Neotree reveal<cr>', silent)
+  --   end,
+  -- },
   {
     "neoclide/coc.nvim",
     branch = "release",
@@ -121,36 +103,61 @@ return {
         'coc-go',
         'coc-highlight',
         'coc-html',
-        'coc-jest',
         'coc-json',
         'coc-lists',
         'coc-lua',
-        'coc-markmap',
+        -- 'coc-oxc', -- deprecated in favor of conform.nvim
         'coc-pairs',
         -- 'coc-powershell', -- too large, > 300MB
-        'coc-prettier',
         'coc-pyright',
-        'coc-reveal',
+        -- 'coc-reveal',
         -- 'coc-rls',
         'coc-snippets',
         'coc-tsserver',
         'coc-yank',
         -- 'coc-zls',
       }
-      require 'coc'
+      require 'coc_options'
     end,
     lazy = false,
+    enabled = is_private,
   },
   {
-    "junegunn/fzf",
-    build = "./install --bin",
-    lazy = false,
+    'stevearc/conform.nvim',
+    opts = {
+      formatters_by_ft = {
+        javascript = { "oxfmt", "prettier", stop_after_first = true },
+        javascriptreact = { "oxfmt", "prettier", stop_after_first = true },
+        typescript = { "oxfmt", "prettier", stop_after_first = true },
+        typescriptreact = { "oxfmt", "prettier", stop_after_first = true },
+        svelte = { "oxfmt", "prettier", stop_after_first = true },
+        vue = { "oxfmt", "prettier", stop_after_first = true },
+        go = { "gofmt", stop_after_first = true },
+      },
+      -- format_on_save = {
+      --   timeout_ms = 500,
+      --   lsp_format = "fallback",
+      -- },
+    },
+    event = "VeryLazy",
   },
   {
     "ibhagwan/fzf-lua",
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = 'FzfLua',
+    opts = {
+      keymap = {
+        fzf = {
+          ["ctrl-q"] = "select-all+accept",
+        }
+      },
+    }
+  },
+  {
+    'kevinhwang91/nvim-bqf',
+    ft = 'qf',
+    event = "VeryLazy",
   },
   {
     'NvChad/nvim-colorizer.lua',
@@ -169,7 +176,6 @@ return {
         end,
         -- Optional dependencies
         dependencies = {
-          "nvim-treesitter/nvim-treesitter",
           "nvim-tree/nvim-web-devicons"
         },
         cmd = { 'AerialOpen', 'AerialToggle' },
@@ -191,21 +197,6 @@ return {
         open_mapping = [[<c-/>]],
         direction = 'float',
       }
-
-      local Terminal = require('toggleterm.terminal').Terminal
-      local tig      = Terminal:new({ cmd = 'tig --submodule=diff', count = 9 })
-
-      function __TigToggle()
-        local cwd = vim.fn.expand('%:p:h')
-        if vim.fn.isdirectory(cwd) ~= 0 then
-          tig.dir = cwd
-        else
-          tig.dir = nil
-        end
-        tig:toggle()
-      end
-
-      vim.api.nvim_set_keymap('n', '<leader>g', '<cmd>lua __TigToggle()<CR>', { noremap = true, silent = true })
     end,
     keys = { '<c-/>', '<leader>g' },
   },
@@ -245,7 +236,13 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = {},
+    opts = {
+      sections = {
+        lualine_a = {
+          { 'mode', fmt = function(mode) return vim.go.paste == true and mode .. ' (paste)' or mode end },
+        },
+      }
+    },
     event = 'VeryLazy',
   },
   {
@@ -264,7 +261,7 @@ return {
     end,
   },
   {
-    "echasnovski/mini.nvim",
+    "nvim-mini/mini.nvim",
     version = "*",
     event = 'VeryLazy',
     config = function()
@@ -284,14 +281,12 @@ return {
   },
   {
     'lukas-reineke/headlines.nvim',
-    dependencies = "nvim-treesitter/nvim-treesitter",
     config = true, -- or `opts = {}`
     event = 'VeryLazy',
   },
   {
     'nvim-orgmode/orgmode',
     dependencies = {
-      { 'nvim-treesitter/nvim-treesitter', lazy = true },
       { 'akinsho/org-bullets.nvim',        opts = {} },
     },
     event = 'VeryLazy',
@@ -311,39 +306,6 @@ return {
     lazy = false,
   },
   {
-    'gera2ld/remotely.nvim',
-    dependencies = 'nvim-lua/plenary.nvim',
-    config = function()
-      local r = require('remotely')
-      local setup = function(name)
-        return {
-          url = os.getenv('REMOTELY_HANDLER_URL'),
-          curlOpts = { '-H', 'content-type: application/json' },
-          preprocess = function(_, args)
-            return {
-              body = {
-                prompt = name,
-                input = args.input,
-              },
-            }
-          end,
-          postprocess = function(_, data)
-            return data.text
-          end,
-        }
-      end
-      local handlerList = r.util.split(os.getenv('REMOTELY_HANDLER_LIST'), ' ')
-      local handlers = {}
-      for _, name in ipairs(handlerList) do
-        handlers[name] = setup(name)
-      end
-      r.setup({
-        handlers = handlers,
-      })
-    end,
-    event = 'VeryLazy',
-  },
-  {
     "johmsalas/text-case.nvim",
     dependencies = { "nvim-telescope/telescope.nvim" },
     config = function()
@@ -353,5 +315,84 @@ return {
     keys = {
       { "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "v" }, desc = "Telescope" },
     },
-  }
+  },
+  {
+    "HakonHarnes/img-clip.nvim",
+    event = "VeryLazy",
+    opts = {
+      default = {
+        dir_path = '',
+        relative_to_current_file = true,
+      },
+    },
+    keys = {
+      { "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
+    },
+  },
+  {
+    "NeogitOrg/neogit",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-lua/plenary.nvim",  -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+      "ibhagwan/fzf-lua",       -- optional
+    },
+  },
+  {
+    "rbong/vim-flog",
+    lazy = true,
+    cmd = { "Flog", "Flogsplit", "Floggit" },
+    dependencies = {
+      "tpope/vim-fugitive",
+    },
+  },
+  {
+    "olimorris/codecompanion.nvim",
+    opts = {
+      adapters = {
+        http = {
+          llm_proxy = function()
+            return require("codecompanion.adapters").extend("openai_compatible", {
+              env = {
+                url = "LLM_API_BASE_URL",
+                api_key = "LLM_API_KEY",
+                chat_url = "/v1/chat/completions",
+              },
+              schema = {
+                model = {
+                  default = os.getenv("LLM_DEFAULT_MODEL")
+                },
+              },
+            })
+          end,
+        },
+      },
+      interactions = {
+        chat = {
+          adapter = "llm_proxy",
+        },
+        inline = {
+          adapter = "llm_proxy",
+        },
+        cmd = {
+          adapter = "llm_proxy",
+        },
+      },
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    event = 'VeryLazy',
+  },
+  {
+    "romus204/tree-sitter-manager.nvim",
+    dependencies = {}, -- tree-sitter CLI must be installed system-wide
+    opts = {
+      ensure_installed = {
+        "bash", "css", "gitignore", "html", "javascript", "tsx", "svelte", "vue",
+      },
+    },
+    event = 'VeryLazy',
+    enabled = is_private,
+  },
 }

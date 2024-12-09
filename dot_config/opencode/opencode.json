@@ -1,0 +1,61 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "prism": {
+      "name": "Prism",
+      "options": {
+        "apiKey": "{env:LLM_API_KEY}",
+        "baseURL": "{env:LLM_BASE_URL}/v1"
+      },
+      "models": {
+        "deepseek/deepseek-v4.1-flash": {
+          "name": "DeepSeek V4.1 Flash",
+          "limit": {
+            "context": 131072,
+            "output": 65536
+          }
+        },
+        "xiaomi/mimo-v2.6-flash": {
+          "name": "Mimo V2.6 Flash",
+          "limit": {
+            "context": 131072,
+            "output": 65536
+          }
+        },
+        "xiaomi/mimo-v2.6-pro": {
+          "name": "Mimo V2.6 Pro",
+          "limit": {
+            "context": 131072,
+            "output": 65536
+          }
+        },
+        "tencent/hy3": {
+          "name": "Tencent Hy3",
+          "limit": {
+            "context": 131072,
+            "output": 65536
+          }
+        },
+        "z-ai/glm-5.3-flash": {
+          "name": "GLM 5.3 Flash",
+          "limit": {
+            "context": 131072,
+            "output": 65536
+          }
+        }
+      }
+    },
+    "ollama": {
+      "name": "Ollama",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3.5:4b": { "name": "Qwen 3.5 4B" },
+        "qwen3.5:9b": { "name": "Qwen 3.5 9B" },
+        "gemma4:latest": { "name": "Gemma 4" }
+      }
+    }
+  }
+}

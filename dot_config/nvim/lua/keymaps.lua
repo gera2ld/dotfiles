@@ -6,10 +6,9 @@ local silent = { silent = true, noremap = true }
 -- so that you can undo CTRL-U after inserting a line break.
 vim.keymap.set('i', '<c-u>', '<c-g>u<c-u>', silent)
 
-vim.keymap.set('n', '<leader>ff', '<cmd>FzfLua files<cr>', silent)
-
 vim.keymap.set('n', '<leader>w', '<c-w>')
 
+-- open quickfix list automatically
 augroup('QuickfixWindows', {})
 autocmd("QuickFixCmdPost", {
   group = 'QuickfixWindows',
@@ -22,31 +21,35 @@ autocmd("QuickFixCmdPost", {
   command = 'lwindow',
 })
 
-vim.keymap.set("n", '-', '<cmd>NvimTreeFindFile<cr>', silent)
+vim.keymap.set('n', '<leader>ff', '<cmd>lua FzfLua.files()<cr>', silent)
+vim.keymap.set('n', '<leader>fg', '<cmd>lua FzfLua.git_files()<cr>', silent)
+vim.keymap.set('n', '<leader>fs', '<cmd>lua FzfLua.live_grep()<cr>', silent)
+vim.keymap.set('n', '<leader>*', "<cmd>lua FzfLua.grep_cword()<cr>", silent)
 
-vim.keymap.set('n', '<leader>ss',
-  ":silent! call CocAction('runCommand', 'editor.action.organizeImport') | silent! call CocAction('format') | w<cr>")
-vim.keymap.set('n', '<leader>sq',
-  ":silent! call CocAction('runCommand', 'editor.action.organizeImport') | silent! call CocAction('format') | wq<cr>")
+vim.keymap.set('n', '<leader>gg', '<cmd>Flog<cr>', silent)
+vim.keymap.set('n', '<leader>ga', '<cmd>Flog -all<cr>', silent)
+vim.keymap.set('n', '<leader>gs', '<cmd>Neogit<cr>', silent)
+vim.keymap.set('n', '<leader>gd', function ()
+  local hash = vim.fn.expand('<cword>')
+  vim.cmd('DiffviewOpen ' .. hash .. '^!')
+end, silent)
 
-vim.api.nvim_create_user_command('Search', function(opts)
-  local lines = vim.fn.systemlist('rg --vimgrep --no-heading --smart-case --hidden --follow -g "!.git" ' .. opts.args)
-  local list = {}
-  for _, line in ipairs(lines) do
-    local c1 = string.find(line, ':')
-    local c2 = string.find(line, ':', c1 + 1)
-    local c3 = string.find(line, ':', c2 + 1)
-    table.insert(list,
-      {
-        filename = string.sub(line, 1, c1 - 1),
-        lnum = string.sub(line, c1 + 1, c2 - 1),
-        col = string.sub(line, c2 + 1, c3 - 1),
-        text = string.sub(line, c3 + 1, -1)
-      })
+function _G.lint_and_format()
+  local function finalize()
+    require('conform').format()
+    vim.cmd('write')
   end
-  vim.fn.setqflist(list)
-  vim.cmd.copen()
-end, { nargs = '+' })
 
-vim.keymap.set('n', '<leader>fg', ':silent Search<space>')
-vim.keymap.set('n', 'g*', ":silent Search -w <c-r>=expand('<cword>')<cr><cr>")
+  if vim.fn.exists('*CocActionAsync') ~= 1 then
+    finalize()
+    return
+  end
+
+  vim.fn.CocActionAsync('runCommand', 'eslint.executeAutofix', function()
+    vim.fn.CocActionAsync('runCommand', 'editor.action.organizeImport', function()
+      finalize()
+    end)
+  end)
+end
+
+vim.keymap.set('n', '<leader>ss', '<cmd>lua _G.lint_and_format()<cr>')

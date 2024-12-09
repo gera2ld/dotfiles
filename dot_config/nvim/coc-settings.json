@@ -14,8 +14,7 @@
     "<C-w>": "command:wincmd k"
   },
   "pairs.disableLanguages": ["svelte"],
-  "powershell.powerShellExePath": "pwsh",
-  "python.formatting.provider": "yapf",
+  "python.formatting.provider": "ruff",
   "snippets.extends": {
     "javascriptreact": ["javascript"]
   },
@@ -32,10 +31,6 @@
       "filetypes": ["svelte"]
     }
   },
-  "svelte.enable-ts-plugin": true,
-  "svelte.plugin.svelte.format.config.singleQuote": true,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "all",
   "snippets.ultisnips.pythonPrompt": false,
   "go.goplsOptions": {
     "staticcheck": true
@@ -43,5 +38,16 @@
   "hover.floatConfig": {
     "border": true
   },
-  "Lua.diagnostics.globals": ["vim"]
+  "Lua.diagnostics.globals": [
+    "vim"
+  ],
+  "json.schemaDownload.trustedDomains": {
+    "https://www.schemastore.org": true,
+    "https://json.schemastore.org": true,
+    "https://unpkg.com": true,
+    "https://opencode.ai": true,
+    "https://models.dev": true,
+    "https://shadcn-vue.com": true,
+    "https://shadcn-svelte.com": true
+  }
 }
