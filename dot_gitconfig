@@ -7,11 +7,14 @@
 	file-style = bold yellow ul
 	file-decoration-style = none
 	hunk-header-decoration-style = yellow box
-[user]
-	email = code@gera2ld.space
-	name = Gerald
-[init]
-	defaultBranch = main
 [diff "lockb"]
 	textconv = bun
 	binary = true
+[init]
+	defaultBranch = main
+[user]
+	name = Gerald
+	email = code@gera2ld.space
+
+[include]
+	path = .config/git/conf.d/local.conf
