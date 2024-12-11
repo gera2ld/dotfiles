@@ -314,10 +314,15 @@ return {
     'gera2ld/remotely.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
     config = function()
+      local REMOTELY_HANDLER_URL = os.getenv('REMOTELY_HANDLER_URL')
+      local REMOTELY_HANDLER_LIST = os.getenv('REMOTELY_HANDLER_LIST')
+      if not REMOTELY_HANDLER_URL or not REMOTELY_HANDLER_LIST then
+        return
+      end
       local r = require('remotely')
       local setup = function(name)
         return {
-          url = os.getenv('REMOTELY_HANDLER_URL'),
+          url = REMOTELY_HANDLER_URL,
           curlOpts = { '-H', 'content-type: application/json' },
           preprocess = function(_, args)
             return {
@@ -332,7 +337,7 @@ return {
           end,
         }
       end
-      local handlerList = r.util.split(os.getenv('REMOTELY_HANDLER_LIST'), ' ')
+      local handlerList = r.util.split(REMOTELY_HANDLER_LIST, ' ')
       local handlers = {}
       for _, name in ipairs(handlerList) do
         handlers[name] = setup(name)
