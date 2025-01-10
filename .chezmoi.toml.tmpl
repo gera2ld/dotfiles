@@ -1,5 +1,11 @@
+{{- $type := promptStringOnce . "type" "Is this machine 'private', 'server' or 'other'?" "other" -}}
 encryption = 'age'
 
+[data]
+type = {{ $type | quote }}
+
+{{ if eq $type "private" -}}
 [age]
-identity = '~/.config/keys/gerald.age'
+identity = '~/.cache/mount_secure/identities'
 recipient = 'age1r9dgdskzdtcse86mlj00m409dgn2gpteuuqq3slcfc46pkk8p4nstdhgu0'
+{{- end }}
