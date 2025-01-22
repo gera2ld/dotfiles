@@ -111,7 +111,7 @@ return {
       vim.g.coc_global_extensions = {
         '@yaegassy/coc-astro',
         '@yaegassy/coc-marksman',
-        '@yaegassy/coc-volar', -- deprecate 'coc-vetur'
+        '@yaegassy/coc-volar',
         'coc-css',
         'coc-deno',
         'coc-emmet',
@@ -121,21 +121,15 @@ return {
         'coc-go',
         'coc-highlight',
         'coc-html',
-        'coc-jest',
         'coc-json',
         'coc-lists',
         'coc-lua',
-        'coc-markmap',
         'coc-pairs',
-        -- 'coc-powershell', -- too large, > 300MB
         'coc-prettier',
         'coc-pyright',
-        'coc-reveal',
-        -- 'coc-rls',
         'coc-snippets',
         'coc-tsserver',
         'coc-yank',
-        -- 'coc-zls',
       }
       require 'coc'
     end,
