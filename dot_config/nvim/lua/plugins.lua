@@ -20,6 +20,7 @@ return {
           'lua',
           'svelte',
           'typescript',
+          'tsx',
           'vim',
           'vue',
         },
@@ -111,7 +112,7 @@ return {
       vim.g.coc_global_extensions = {
         '@yaegassy/coc-astro',
         '@yaegassy/coc-marksman',
-        '@yaegassy/coc-volar',
+        '@yaegassy/coc-volar', -- deprecate 'coc-vetur'
         'coc-css',
         'coc-deno',
         'coc-emmet',
@@ -125,11 +126,15 @@ return {
         'coc-lists',
         'coc-lua',
         'coc-pairs',
+        -- 'coc-powershell', -- too large, > 300MB
         'coc-prettier',
         'coc-pyright',
+        -- 'coc-reveal',
+        -- 'coc-rls',
         'coc-snippets',
         'coc-tsserver',
         'coc-yank',
+        -- 'coc-zls',
       }
       require 'coc'
     end,
