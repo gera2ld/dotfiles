@@ -326,7 +326,7 @@ return {
           preprocess = function(_, args)
             return {
               body = {
-                prompt = name,
+                promptName = name,
                 input = args.input,
               },
             }
