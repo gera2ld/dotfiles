@@ -86,23 +86,19 @@ return {
     end,
   },
   {
-    'nvim-tree/nvim-tree.lua',
-    cmd = { 'NvimTreeOpen', 'NvimTreeFindFile' },
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      -- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
+    },
+    lazy = false, -- neo-tree will lazily load itself
+    ---@module "neo-tree"
+    ---@type neotree.Config?
     opts = {
-      git = {
-        ignore = false,
-      },
-      update_focused_file = {
-        update_root = true,
-      },
-      -- https://github.com/nvim-tree/nvim-tree.lua/issues/2438#issuecomment-1848866750
-      filesystem_watchers = {
-        enable = true,
-        debounce_delay = 50,
-        ignore_dirs = {
-          "node_modules"
-        },
-      },
+      -- fill any relevant options here
     },
   },
   {

@@ -22,7 +22,7 @@ autocmd("QuickFixCmdPost", {
   command = 'lwindow',
 })
 
-vim.keymap.set("n", '-', '<cmd>NvimTreeFindFile<cr>', silent)
+vim.keymap.set("n", '-', '<cmd>Neotree reveal<cr>', silent)
 
 vim.keymap.set('n', '<leader>ss',
   ":silent! call CocAction('runCommand', 'editor.action.organizeImport') | silent! call CocAction('format') | w<cr>")
