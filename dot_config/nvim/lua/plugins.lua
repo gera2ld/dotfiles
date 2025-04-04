@@ -75,15 +75,6 @@ return {
   {
     'DNLHC/glance.nvim',
     cmd = 'Glance',
-    config = function()
-      require('glance').setup {
-        detached = true,
-        border = { enable = true, top_char = '─', bottom_char = '─' },
-        theme = { mode = 'brighten' },
-        indent_lines = { icon = '│' },
-        winbar = { enable = true },
-      }
-    end,
   },
   {
     'nvim-tree/nvim-tree.lua',
@@ -104,7 +95,35 @@ return {
         },
       },
     },
+    init = function()
+      vim.keymap.set("n", '-', '<cmd>NvimTreeFindFile<cr>', { silent = true, noremap = true })
+    end,
   },
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   branch = "v3.x",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+  --     "MunifTanjim/nui.nvim",
+  --     -- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
+  --   },
+  --   lazy = false, -- neo-tree will lazily load itself
+  --   ---@module "neo-tree"
+  --   ---@type neotree.Config?
+  --   opts = {
+  --     filesystem = {
+  --       filtered_items = {
+  --         visible = false,
+  --         hide_dotfiles = false,
+  --         hide_gitignored = true,
+  --       },
+  --     },
+  --   },
+  --   init = function()
+  --     vim.keymap.set("n", '-', '<cmd>Neotree reveal<cr>', silent)
+  --   end,
+  -- },
   {
     "neoclide/coc.nvim",
     branch = "release",
