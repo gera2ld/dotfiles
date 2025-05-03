@@ -376,5 +376,18 @@ return {
     keys = {
       { "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "v" }, desc = "Telescope" },
     },
+  },
+  {
+    "HakonHarnes/img-clip.nvim",
+    event = "VeryLazy",
+    opts = {
+      default = {
+        dir_path = '',
+        relative_to_current_file = true,
+      },
+    },
+    keys = {
+      { "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
+    },
   }
 }
