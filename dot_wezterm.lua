@@ -2,6 +2,7 @@ local wezterm = require 'wezterm';
 
 local config = {
   hide_tab_bar_if_only_one_tab = true,
+  color_scheme = 'tokyonight',
   font = wezterm.font('Cascadia Code PL'),
   leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 },
   keys = {
