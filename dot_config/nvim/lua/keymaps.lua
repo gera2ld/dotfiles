@@ -47,4 +47,4 @@ vim.api.nvim_create_user_command('Search', function(opts)
 end, { nargs = '+' })
 
 vim.keymap.set('n', '<leader>fg', ':silent Search<space>')
-vim.keymap.set('n', 'g*', ":silent Search -w <c-r>=expand('<cword>')<cr><cr>")
+vim.keymap.set('n', 'g*', ":silent Search -Fw '<c-r>=expand('<cword>')<cr>'<cr>")
