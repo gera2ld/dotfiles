@@ -15,7 +15,7 @@
   },
   "pairs.disableLanguages": ["svelte"],
   "powershell.powerShellExePath": "pwsh",
-  "python.formatting.provider": "yapf",
+  "python.formatting.provider": "ruff",
   "snippets.extends": {
     "javascriptreact": ["javascript"]
   },

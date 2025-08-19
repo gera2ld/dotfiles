@@ -1,20 +1,10 @@
-[core]
-	pager = delta
-[delta]
-	features = side-by-side line-numbers decorations
-[delta "decorations"]
-	commit-decoration-style = bold yellow box ul
-	file-style = bold yellow ul
-	file-decoration-style = none
-	hunk-header-decoration-style = yellow box
-[diff "lockb"]
-	textconv = bun
-	binary = true
 [init]
 	defaultBranch = main
-[user]
-	name = Gerald
-	email = code@gera2ld.space
 
+# Common config is moved to `~/.config` so that it is only included on the host, but not devcontainers
 [include]
-	path = .config/git/conf.d/local.conf
+	path = .config/git/conf.d/common.conf
+	path = .config/git/conf.d/local.conf # optional
+
+[includeIf "gitdir:~/Work/"]
+	path = .config/git/conf.d/work.conf # optional
