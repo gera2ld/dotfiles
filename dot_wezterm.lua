@@ -32,6 +32,16 @@ local config = {
       mods = 'CMD',
       action = wezterm.action.CloseCurrentPane { confirm = true },
     },
+    {
+      key = 'LeftArrow',
+      mods = 'SUPER|SHIFT',
+      action = wezterm.action.MoveTabRelative(-1),
+    },
+    {
+      key = 'RightArrow',
+      mods = 'SUPER|SHIFT',
+      action = wezterm.action.MoveTabRelative(1),
+    },
   },
 }
 
