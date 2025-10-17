@@ -263,7 +263,13 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = {},
+    opts = {
+      sections = {
+        lualine_a = {
+          { 'mode', fmt = function(mode) return vim.go.paste == true and mode .. ' (paste)' or mode end },
+        },
+      }
+    },
     event = 'VeryLazy',
   },
   {
