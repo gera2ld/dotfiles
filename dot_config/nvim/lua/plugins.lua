@@ -400,9 +400,47 @@ return {
     "NeogitOrg/neogit",
     event = "VeryLazy",
     dependencies = {
-      "nvim-lua/plenary.nvim", -- required
+      "nvim-lua/plenary.nvim",  -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
-      "ibhagwan/fzf-lua",            -- optional
+      "ibhagwan/fzf-lua",       -- optional
     },
+  },
+  {
+    "olimorris/codecompanion.nvim",
+    opts = {
+      adapters = {
+        http = {
+          litellm = function()
+            return require("codecompanion.adapters").extend("openai_compatible", {
+              env = {
+                url = "https://llm.pore.run",
+                api_key = "LLM_API_KEY",
+                chat_url = "/v1/chat/completions",
+              },
+              schema = {
+                model = {
+                  default = "openrouter/deepseek/deepseek-v3.2",
+                },
+              },
+            })
+          end,
+        },
+      },
+      strategies = {
+        chat = {
+          adapter = "litellm",
+        },
+        inline = {
+          adapter = "litellm",
+        },
+        cmd = {
+          adapter = "litellm",
+        },
+      },
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    event = 'VeryLazy',
   },
 }
