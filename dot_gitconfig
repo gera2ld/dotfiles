@@ -8,6 +8,3 @@
 [include]
 	path = .config/git/conf.d/common.conf
 	path = .config/git/conf.d/local.conf # optional
-
-[includeIf "gitdir:~/Work/"]
-	path = .config/git/conf.d/work.conf # optional
