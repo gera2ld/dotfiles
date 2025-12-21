@@ -157,7 +157,7 @@ return {
         'coc-yank',
         -- 'coc-zls',
       }
-      require 'coc'
+      require 'coc_options'
     end,
     lazy = false,
     enabled = is_private,
