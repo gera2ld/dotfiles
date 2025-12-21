@@ -172,3 +172,23 @@ keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
 keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
 -- Yank list
 keyset("n", "<space>y", ":<C-u>CocList yank<cr>", opts)
+
+function _G.lint_and_format()
+  local function run_silent_coc_action(action, arg, delay_ms)
+    print('CocAction:', action, arg)
+    local ok, result = pcall(vim.fn.CocAction, action, arg)
+    if ok and delay_ms then
+      vim.loop.sleep(delay_ms)
+    end
+    if not ok then
+      print('CocAction ERROR:' .. result)
+    end
+    return ok
+  end
+  run_silent_coc_action('runCommand', 'eslint.executeAutofix', 300)
+  run_silent_coc_action('runCommand', 'editor.action.organizeImport', 200)
+  run_silent_coc_action('format', nil)
+end
+
+vim.keymap.set('n', '<leader>ss', '<cmd>lua _G.lint_and_format()<cr><cmd>w<cr>')
+vim.keymap.set('n', '<leader>sq', '<cmd>lua _G.lint_and_format()<cr><cmd>wq<cr>')

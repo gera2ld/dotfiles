@@ -1,4 +1,6 @@
 -- based on https://github.com/wbthomason/dotfiles
+local is_private = os.getenv('MACHINE_TYPE') == 'private'
+
 return {
   {
     "folke/tokyonight.nvim",
@@ -158,6 +160,7 @@ return {
       require 'coc'
     end,
     lazy = false,
+    enabled = is_private,
   },
   {
     "junegunn/fzf",
