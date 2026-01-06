@@ -34,6 +34,7 @@
   },
   "svelte.enable-ts-plugin": true,
   "svelte.plugin.svelte.format.config.singleQuote": true,
+  "prettier.disableLanguages": ["markdown"],
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
   "snippets.ultisnips.pythonPrompt": false,
