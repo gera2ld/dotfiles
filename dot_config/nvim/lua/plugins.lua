@@ -13,6 +13,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    enabled = is_private,
     build = ":TSUpdate",
     config = function()
       require 'nvim-treesitter.configs'.setup {
