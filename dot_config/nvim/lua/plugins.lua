@@ -417,13 +417,13 @@ return {
           litellm = function()
             return require("codecompanion.adapters").extend("openai_compatible", {
               env = {
-                url = "https://llm.pore.run",
+                url = "LLM_API_BASE_URL",
                 api_key = "LLM_API_KEY",
                 chat_url = "/v1/chat/completions",
               },
               schema = {
                 model = {
-                  default = "openrouter/deepseek/deepseek-v3.2",
+                  default = "deepseek/deepseek-v3.2",
                 },
               },
             })
