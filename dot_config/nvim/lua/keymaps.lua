@@ -29,13 +29,15 @@ vim.api.nvim_create_user_command('Search', function(opts)
     local c1 = string.find(line, ':')
     local c2 = string.find(line, ':', c1 + 1)
     local c3 = string.find(line, ':', c2 + 1)
-    table.insert(list,
-      {
-        filename = string.sub(line, 1, c1 - 1),
-        lnum = string.sub(line, c1 + 1, c2 - 1),
-        col = string.sub(line, c2 + 1, c3 - 1),
-        text = string.sub(line, c3 + 1, -1)
-      })
+    if c3 ~= nil then
+      table.insert(list,
+        {
+          filename = string.sub(line, 1, c1 - 1),
+          lnum = string.sub(line, c1 + 1, c2 - 1),
+          col = string.sub(line, c2 + 1, c3 - 1),
+          text = string.sub(line, c3 + 1, -1)
+        })
+    end
   end
   vim.fn.setqflist(list)
   vim.cmd.copen()
