@@ -23,7 +23,7 @@ autocmd("QuickFixCmdPost", {
 })
 
 vim.api.nvim_create_user_command('Search', function(opts)
-  local lines = vim.fn.systemlist('rg --vimgrep --no-heading --smart-case --hidden --follow -g "!.git" ' .. opts.args)
+  local lines = vim.fn.systemlist('rg --vimgrep --no-heading --smart-case --hidden --follow -g "!.git" -M 150 --max-columns-preview ' .. opts.args)
   local list = {}
   for _, line in ipairs(lines) do
     local c1 = string.find(line, ':')
