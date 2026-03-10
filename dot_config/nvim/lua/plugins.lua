@@ -168,6 +168,13 @@ return {
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = 'FzfLua',
+    opts = {
+      keymap = {
+        fzf = {
+          ["ctrl-q"] = "select-all+accept",
+        }
+      },
+    }
   },
   {
     'kevinhwang91/nvim-bqf',
