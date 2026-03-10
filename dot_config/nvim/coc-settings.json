@@ -14,7 +14,6 @@
     "<C-w>": "command:wincmd k"
   },
   "pairs.disableLanguages": ["svelte"],
-  "powershell.powerShellExePath": "pwsh",
   "python.formatting.provider": "ruff",
   "snippets.extends": {
     "javascriptreact": ["javascript"]
@@ -32,8 +31,6 @@
       "filetypes": ["svelte"]
     }
   },
-  "svelte.enable-ts-plugin": true,
-  "svelte.plugin.svelte.format.config.singleQuote": true,
   "prettier.disableLanguages": ["markdown"],
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",

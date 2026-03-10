@@ -164,15 +164,15 @@ return {
     enabled = is_private,
   },
   {
-    "junegunn/fzf",
-    build = "./install --bin",
-    lazy = false,
-  },
-  {
     "ibhagwan/fzf-lua",
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = 'FzfLua',
+  },
+  {
+    'kevinhwang91/nvim-bqf',
+    ft = 'qf',
+    event = "VeryLazy",
   },
   {
     'NvChad/nvim-colorizer.lua',
@@ -414,7 +414,7 @@ return {
     opts = {
       adapters = {
         http = {
-          litellm = function()
+          llm_proxy = function()
             return require("codecompanion.adapters").extend("openai_compatible", {
               env = {
                 url = "LLM_API_BASE_URL",
@@ -432,13 +432,13 @@ return {
       },
       strategies = {
         chat = {
-          adapter = "litellm",
+          adapter = "llm_proxy",
         },
         inline = {
-          adapter = "litellm",
+          adapter = "llm_proxy",
         },
         cmd = {
-          adapter = "litellm",
+          adapter = "llm_proxy",
         },
       },
     },
