@@ -26,6 +26,7 @@ return {
           'tsx',
           'vim',
           'vue',
+          'yaml',
         },
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -430,14 +431,14 @@ return {
               },
               schema = {
                 model = {
-                  default = "deepseek/deepseek-v3.2",
+                  default = os.getenv("LLM_DEFAULT_MODEL")
                 },
               },
             })
           end,
         },
       },
-      strategies = {
+      interactions = {
         chat = {
           adapter = "llm_proxy",
         },
