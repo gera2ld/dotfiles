@@ -31,9 +31,10 @@
       "filetypes": ["svelte"]
     }
   },
-  "prettier.disableLanguages": ["markdown"],
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "all",
+  "oxc.oxfmt.enable": true,
+  "javascript.format.enable": false,
+  "typescript.format.enable": false,
+  "prettier.enable": false,
   "snippets.ultisnips.pythonPrompt": false,
   "go.goplsOptions": {
     "staticcheck": true

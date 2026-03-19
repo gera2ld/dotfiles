@@ -148,9 +148,9 @@ return {
         'coc-json',
         'coc-lists',
         'coc-lua',
+        'coc-oxc', -- deprecate prettier
         'coc-pairs',
         -- 'coc-powershell', -- too large, > 300MB
-        'coc-prettier',
         'coc-pyright',
         -- 'coc-reveal',
         -- 'coc-rls',

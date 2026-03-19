@@ -4,7 +4,7 @@ local config = {
   hide_tab_bar_if_only_one_tab = true,
   color_scheme = 'tokyonight',
   font = wezterm.font('Cascadia Code PL'),
-  leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 },
+  leader = { key = ']', mods = 'CTRL', timeout_milliseconds = 1000 },
   keys = {
     {
       key = '%',
@@ -15,12 +15,6 @@ local config = {
       key = '"',
       mods = 'LEADER|SHIFT',
       action = wezterm.action.SplitVertical,
-    },
-    -- Send `c-a` to the terminal when pressing `c-a c-a`
-    {
-      key = 'a',
-      mods = 'LEADER|CTRL',
-      action = wezterm.action.SendKey { key = 'a', mods = 'CTRL' },
     },
     {
       key = 'x',
