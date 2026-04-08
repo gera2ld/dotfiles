@@ -36,6 +36,11 @@ local config = {
       mods = 'SUPER|SHIFT',
       action = wezterm.action.MoveTabRelative(1),
     },
+    {
+      key = '9',
+      mods = 'LEADER',
+      action = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES' },
+    },
   },
 }
 
