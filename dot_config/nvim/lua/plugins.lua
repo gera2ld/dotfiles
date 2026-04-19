@@ -148,7 +148,7 @@ return {
         'coc-json',
         'coc-lists',
         'coc-lua',
-        'coc-oxc', -- deprecate prettier
+        -- 'coc-oxc', -- deprecated in favor of conform.nvim
         'coc-pairs',
         -- 'coc-powershell', -- too large, > 300MB
         'coc-pyright',
@@ -163,6 +163,21 @@ return {
     end,
     lazy = false,
     enabled = is_private,
+  },
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      formatters_by_ft = {
+        javascript = { "oxfmt", "prettier", stop_after_first = true },
+        typescript = { "oxfmt", "prettier", stop_after_first = true },
+        svelte = { "oxfmt", "prettier", stop_after_first = true },
+      },
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_fallback = true,
+      },
+    },
+    event = "VeryLazy",
   },
   {
     "ibhagwan/fzf-lua",

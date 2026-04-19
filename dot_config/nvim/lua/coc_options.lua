@@ -187,7 +187,6 @@ function _G.lint_and_format()
   end
   run_silent_coc_action('runCommand', 'eslint.executeAutofix', 300)
   run_silent_coc_action('runCommand', 'editor.action.organizeImport', 200)
-  run_silent_coc_action('format', nil)
 end
 
 vim.keymap.set('n', '<leader>ss', '<cmd>lua _G.lint_and_format()<cr><cmd>w<cr>')
