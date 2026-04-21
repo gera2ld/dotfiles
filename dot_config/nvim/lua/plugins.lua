@@ -169,8 +169,11 @@ return {
     opts = {
       formatters_by_ft = {
         javascript = { "oxfmt", "prettier", stop_after_first = true },
+        javascriptreact = { "oxfmt", "prettier", stop_after_first = true },
         typescript = { "oxfmt", "prettier", stop_after_first = true },
+        typescriptreact = { "oxfmt", "prettier", stop_after_first = true },
         svelte = { "oxfmt", "prettier", stop_after_first = true },
+        vue = { "oxfmt", "prettier", stop_after_first = true },
       },
       format_on_save = {
         timeout_ms = 500,
