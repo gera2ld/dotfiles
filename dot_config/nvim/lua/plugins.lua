@@ -174,7 +174,7 @@ return {
       },
       format_on_save = {
         timeout_ms = 500,
-        lsp_fallback = true,
+        lsp_format = "fallback",
       },
     },
     event = "VeryLazy",
@@ -236,21 +236,6 @@ return {
         open_mapping = [[<c-/>]],
         direction = 'float',
       }
-
-      local Terminal = require('toggleterm.terminal').Terminal
-      local tig      = Terminal:new({ cmd = 'tig --submodule=diff', count = 9 })
-
-      function __TigToggle()
-        local cwd = vim.fn.expand('%:p:h')
-        if vim.fn.isdirectory(cwd) ~= 0 then
-          tig.dir = cwd
-        else
-          tig.dir = nil
-        end
-        tig:toggle()
-      end
-
-      vim.api.nvim_set_keymap('n', '<leader>g', '<cmd>lua __TigToggle()<CR>', { noremap = true, silent = true })
     end,
     keys = { '<c-/>', '<leader>g' },
   },
@@ -362,44 +347,6 @@ return {
     lazy = false,
   },
   {
-    'gera2ld/remotely.nvim',
-    dependencies = 'nvim-lua/plenary.nvim',
-    config = function()
-      local REMOTELY_HANDLER_URL = os.getenv('REMOTELY_HANDLER_URL')
-      local REMOTELY_HANDLER_LIST = os.getenv('REMOTELY_HANDLER_LIST')
-      if not REMOTELY_HANDLER_URL or not REMOTELY_HANDLER_LIST then
-        return
-      end
-      local r = require('remotely')
-      local setup = function(name)
-        return {
-          url = REMOTELY_HANDLER_URL,
-          curlOpts = { '-H', 'content-type: application/json' },
-          preprocess = function(_, args)
-            return {
-              body = {
-                promptName = name,
-                input = args.input,
-              },
-            }
-          end,
-          postprocess = function(_, data)
-            return data.text
-          end,
-        }
-      end
-      local handlerList = r.util.split(REMOTELY_HANDLER_LIST, ' ')
-      local handlers = {}
-      for _, name in ipairs(handlerList) do
-        handlers[name] = setup(name)
-      end
-      r.setup({
-        handlers = handlers,
-      })
-    end,
-    event = 'VeryLazy',
-  },
-  {
     "johmsalas/text-case.nvim",
     dependencies = { "nvim-telescope/telescope.nvim" },
     config = function()
@@ -430,6 +377,14 @@ return {
       "nvim-lua/plenary.nvim",  -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
       "ibhagwan/fzf-lua",       -- optional
+    },
+  },
+  {
+    "rbong/vim-flog",
+    lazy = true,
+    cmd = { "Flog", "Flogsplit", "Floggit" },
+    dependencies = {
+      "tpope/vim-fugitive",
     },
   },
   {
