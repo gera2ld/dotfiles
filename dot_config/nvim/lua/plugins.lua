@@ -11,48 +11,6 @@ return {
     end,
     lazy = false,
   },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    enabled = is_private,
-    build = ":TSUpdate",
-    config = function()
-      require 'nvim-treesitter.configs'.setup {
-        -- A list of parser names, or "all"
-        ensure_installed = {
-          'astro',
-          'lua',
-          'svelte',
-          'typescript',
-          'tsx',
-          'vim',
-          'vue',
-          'yaml',
-        },
-
-        -- Install parsers synchronously (only applied to `ensure_installed`)
-        sync_install = false,
-
-        -- List of parsers to ignore installing (for "all")
-        ignore_install = {},
-
-        highlight = {
-          enable = true,
-          disable = function(_lang, buf)
-            local max_filesize = 100 * 1024
-            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-            if ok and stats and stats.size > max_filesize then
-              return true
-            end
-          end,
-          additional_vim_regex_highlighting = false,
-        },
-
-        indent = {
-          enable = true,
-        },
-      }
-    end,
-  },
   { 'chaoren/vim-wordmotion', event = 'VeryLazy' },
   {
     'mbbill/undotree',
@@ -217,7 +175,6 @@ return {
         end,
         -- Optional dependencies
         dependencies = {
-          "nvim-treesitter/nvim-treesitter",
           "nvim-tree/nvim-web-devicons"
         },
         cmd = { 'AerialOpen', 'AerialToggle' },
@@ -323,14 +280,12 @@ return {
   },
   {
     'lukas-reineke/headlines.nvim',
-    dependencies = "nvim-treesitter/nvim-treesitter",
     config = true, -- or `opts = {}`
     event = 'VeryLazy',
   },
   {
     'nvim-orgmode/orgmode',
     dependencies = {
-      { 'nvim-treesitter/nvim-treesitter', lazy = true },
       { 'akinsho/org-bullets.nvim',        opts = {} },
     },
     event = 'VeryLazy',
