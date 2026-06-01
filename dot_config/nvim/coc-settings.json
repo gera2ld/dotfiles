@@ -31,10 +31,6 @@
       "filetypes": ["svelte"]
     }
   },
-  "oxc.oxfmt.enable": true,
-  "javascript.format.enable": false,
-  "typescript.format.enable": false,
-  "prettier.enable": false,
   "snippets.ultisnips.pythonPrompt": false,
   "go.goplsOptions": {
     "staticcheck": true

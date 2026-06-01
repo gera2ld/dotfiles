@@ -137,10 +137,6 @@ keyset("v", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', o
 keyset("n", "<C-s>", "<Plug>(coc-range-select)", {silent = true})
 keyset("x", "<C-s>", "<Plug>(coc-range-select)", {silent = true})
 
-
--- Add `:Format` command to format current buffer
-vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
-
 -- " Add `:Fold` command to fold current buffer
 vim.api.nvim_create_user_command("Fold", "call CocAction('fold', <f-args>)", {nargs = '?'})
 
@@ -172,22 +168,3 @@ keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
 keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
 -- Yank list
 keyset("n", "<space>y", ":<C-u>CocList yank<cr>", opts)
-
-function _G.lint_and_format()
-  local function run_silent_coc_action(action, arg, delay_ms)
-    print('CocAction:', action, arg)
-    local ok, result = pcall(vim.fn.CocAction, action, arg)
-    if ok and delay_ms then
-      vim.loop.sleep(delay_ms)
-    end
-    if not ok then
-      print('CocAction ERROR:' .. result)
-    end
-    return ok
-  end
-  run_silent_coc_action('runCommand', 'eslint.executeAutofix', 300)
-  run_silent_coc_action('runCommand', 'editor.action.organizeImport', 200)
-end
-
-vim.keymap.set('n', '<leader>ss', '<cmd>lua _G.lint_and_format()<cr><cmd>w<cr>')
-vim.keymap.set('n', '<leader>sq', '<cmd>lua _G.lint_and_format()<cr><cmd>wq<cr>')

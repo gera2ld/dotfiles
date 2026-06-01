@@ -33,3 +33,23 @@ vim.keymap.set('n', '<leader>gd', function ()
   local hash = vim.fn.expand('<cword>')
   vim.cmd('DiffviewOpen ' .. hash .. '^!')
 end, silent)
+
+function _G.lint_and_format()
+  local function finalize()
+    require('conform').format()
+    vim.cmd('write')
+  end
+
+  if vim.fn.exists('*CocActionAsync') ~= 1 then
+    finalize()
+    return
+  end
+
+  vim.fn.CocActionAsync('runCommand', 'eslint.executeAutofix', function()
+    vim.fn.CocActionAsync('runCommand', 'editor.action.organizeImport', function()
+      finalize()
+    end)
+  end)
+end
+
+vim.keymap.set('n', '<leader>ss', '<cmd>lua _G.lint_and_format()<cr>')
