@@ -1,0 +1,76 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "new-api": {
+      "name": "New API",
+      "options": {
+        "apiKey": "{env:LLM_API_KEY}",
+        "baseURL": "{env:LLM_API_BASE_URL}/v1"
+      },
+      "models": {
+        "deepseek/deepseek-v4-flash": {
+          "name": "DeepSeek V4 Flash",
+          "limit": {
+            "context": 256000,
+            "output": 65536
+          },
+          "options": {
+            "provider": {}
+          }
+        },
+        "xiaomi/mimo-v2.5": {
+          "name": "Mimo V2.5",
+          "limit": {
+            "context": 256000,
+            "output": 65536
+          },
+          "options": {
+            "provider": {}
+          }
+        },
+        "xiaomi/mimo-v2.5-pro": {
+          "name": "Mimo V2.5 Pro",
+          "limit": {
+            "context": 256000,
+            "output": 65536
+          },
+          "options": {
+            "provider": {}
+          }
+        },
+        "moonshotai/kimi-k2.7-code": {
+          "name": "Kimi K2.7 Code",
+          "limit": {
+            "context": 256000,
+            "output": 65536
+          },
+          "options": {
+            "provider": {}
+          }
+        },
+        "qwen/qwen3.6-27b": {
+          "name": "Qwen 3.6 27B",
+          "limit": {
+            "context": 256000,
+            "output": 32768
+          },
+          "options": {
+            "provider": {}
+          }
+        }
+      }
+    },
+    "ollama": {
+      "name": "Ollama",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3.5:4b": { "name": "Qwen 3.5 4B" },
+        "qwen3.5:9b": { "name": "Qwen 3.5 9B" },
+        "gemma4:latest": { "name": "Gemma 4" }
+      }
+    }
+  }
+}
