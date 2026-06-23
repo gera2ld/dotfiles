@@ -384,4 +384,14 @@ return {
     },
     event = 'VeryLazy',
   },
+  {
+    "romus204/tree-sitter-manager.nvim",
+    dependencies = {}, -- tree-sitter CLI must be installed system-wide
+    opts = {
+      ensure_installed = {
+        "bash", "css", "gitignore", "html", "javascript", "tsx", "svelte", "vue",
+      },
+    },
+    event = 'VeryLazy',
+  },
 }
