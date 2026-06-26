@@ -393,5 +393,6 @@ return {
       },
     },
     event = 'VeryLazy',
+    enabled = is_private,
   },
 }
