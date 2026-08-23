@@ -11,7 +11,7 @@
         "deepseek/deepseek-v4-flash": {
           "name": "DeepSeek V4 Flash",
           "limit": {
-            "context": 65536,
+            "context": 131072,
             "output": 65536
           },
           "options": {
@@ -21,7 +21,7 @@
         "xiaomi/mimo-v2.5": {
           "name": "Mimo V2.5",
           "limit": {
-            "context": 65536,
+            "context": 131072,
             "output": 65536
           },
           "options": {
@@ -31,27 +31,17 @@
         "xiaomi/mimo-v2.5-pro": {
           "name": "Mimo V2.5 Pro",
           "limit": {
-            "context": 65536,
+            "context": 131072,
             "output": 65536
           },
           "options": {
             "provider": {}
           }
         },
-        "moonshotai/kimi-k2.7-code": {
-          "name": "Kimi K2.7 Code",
+        "tencent/hy3": {
+          "name": "Tencent Hy3",
           "limit": {
-            "context": 65536,
-            "output": 65536
-          },
-          "options": {
-            "provider": {}
-          }
-        },
-        "qwen/qwen3.6-27b": {
-          "name": "Qwen 3.6 27B",
-          "limit": {
-            "context": 65536,
+            "context": 131072,
             "output": 32768
           },
           "options": {
