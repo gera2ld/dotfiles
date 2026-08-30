@@ -47,6 +47,16 @@
           "options": {
             "provider": {}
           }
+        },
+        "z-ai/glm-5.3-flash": {
+          "name": "GLM 5.3 Flash",
+          "limit": {
+            "context": 131072,
+            "output": 32768
+          },
+          "options": {
+            "provider": {}
+          }
         }
       }
     },
