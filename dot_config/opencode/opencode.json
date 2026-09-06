@@ -8,8 +8,8 @@
         "baseURL": "{env:LLM_API_BASE_URL}/v1"
       },
       "models": {
-        "deepseek/deepseek-v4-flash": {
-          "name": "DeepSeek V4 Flash",
+        "deepseek/deepseek-v4.1-flash": {
+          "name": "DeepSeek V4.1 Flash",
           "limit": {
             "context": 131072,
             "output": 65536
@@ -50,6 +50,46 @@
         },
         "z-ai/glm-5.3-flash": {
           "name": "GLM 5.3 Flash",
+          "limit": {
+            "context": 131072,
+            "output": 32768
+          },
+          "options": {
+            "provider": {}
+          }
+        },
+        "xiaomi/mimo-v2.5:free": {
+          "name": "Mimo V2.5 Free",
+          "limit": {
+            "context": 131072,
+            "output": 65536
+          },
+          "options": {
+            "provider": {}
+          }
+        },
+        "tencent/hy3:free": {
+          "name": "Tencent Hy3 Free",
+          "limit": {
+            "context": 131072,
+            "output": 32768
+          },
+          "options": {
+            "provider": {}
+          }
+        },
+        "z-ai/glm-5.3-flash:free": {
+          "name": "GLM 5.3 Flash Free",
+          "limit": {
+            "context": 131072,
+            "output": 32768
+          },
+          "options": {
+            "provider": {}
+          }
+        },
+        "qwen/qwen3.8-flash:free": {
+          "name": "Qwen 3.8 Flash Free",
           "limit": {
             "context": 131072,
             "output": 32768
