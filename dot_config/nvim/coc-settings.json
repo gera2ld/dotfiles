@@ -38,5 +38,14 @@
   "hover.floatConfig": {
     "border": true
   },
-  "Lua.diagnostics.globals": ["vim"]
+  "Lua.diagnostics.globals": [
+    "vim"
+  ],
+  "json.schemaDownload.trustedDomains": {
+    "https://www.schemastore.org": true,
+    "https://json.schemastore.org": true,
+    "https://unpkg.com": true,
+    "https://opencode.ai": true,
+    "https://models.dev": true
+  }
 }
