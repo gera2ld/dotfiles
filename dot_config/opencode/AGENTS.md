@@ -1,5 +1,5 @@
-# Best Practice
+# Best Practices
 
-- If the project has `.jj` in its root, use `jj` for version control, and `jj commit -m "<message>"` to commit.
-- Check if `bun.lock` or `pnpm-lock.yaml` exists and use the correct package manager.
-- Only keep comments that are still useful after a month.
+- Run `jj root` to detect whether the project is managed by `jj`. If so, use `jj commit -m "<message>"` to commit.
+- Check whether `bun.lock` or `pnpm-lock.yaml` exists and use the correct package manager.
+- Only keep comments that will still be useful after a month.

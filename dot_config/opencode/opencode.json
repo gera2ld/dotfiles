@@ -5,7 +5,7 @@
       "name": "New API",
       "options": {
         "apiKey": "{env:LLM_API_KEY}",
-        "baseURL": "{env:LLM_API_BASE_URL}/v1"
+        "baseURL": "{env:LLM_BASE_URL}/v1"
       },
       "models": {
         "deepseek/deepseek-v4.1-flash": {
