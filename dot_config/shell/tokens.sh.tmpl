@@ -1,4 +1,4 @@
 export MISE_GITHUB_TOKEN="{{ output "sh" "-c" "pw get github/mise MISE_GITHUB_TOKEN 2>/dev/null || true" | trim }}"
 
-export LLM_BASE_URL="{{ output "sh" "-c" "pw get ai/new-api LLM_BASE_URL 2>/dev/null || true" | trim }}"
-export LLM_API_KEY="{{ output "sh" "-c" "pw get ai/new-api LLM_API_KEY 2>/dev/null || true" | trim }}"
+export LLM_BASE_URL="{{ output "sh" "-c" "pw get ai/prism LLM_BASE_URL 2>/dev/null || true" | trim }}"
+export LLM_API_KEY="{{ output "sh" "-c" "pw get ai/prism LLM_API_KEY 2>/dev/null || true" | trim }}"
