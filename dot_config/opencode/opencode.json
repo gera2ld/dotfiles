@@ -13,89 +13,34 @@
           "limit": {
             "context": 131072,
             "output": 65536
-          },
-          "options": {
-            "provider": {}
           }
         },
-        "xiaomi/mimo-v2.5": {
-          "name": "Mimo V2.5",
+        "xiaomi/mimo-v2.6-flash": {
+          "name": "Mimo V2.6 Flash",
           "limit": {
             "context": 131072,
             "output": 65536
-          },
-          "options": {
-            "provider": {}
           }
         },
-        "xiaomi/mimo-v2.5-pro": {
-          "name": "Mimo V2.5 Pro",
+        "xiaomi/mimo-v2.6-pro": {
+          "name": "Mimo V2.6 Pro",
           "limit": {
             "context": 131072,
             "output": 65536
-          },
-          "options": {
-            "provider": {}
           }
         },
         "tencent/hy3": {
           "name": "Tencent Hy3",
           "limit": {
             "context": 131072,
-            "output": 32768
-          },
-          "options": {
-            "provider": {}
+            "output": 65536
           }
         },
         "z-ai/glm-5.3-flash": {
           "name": "GLM 5.3 Flash",
           "limit": {
             "context": 131072,
-            "output": 32768
-          },
-          "options": {
-            "provider": {}
-          }
-        },
-        "xiaomi/mimo-v2.5:free": {
-          "name": "Mimo V2.5 Free",
-          "limit": {
-            "context": 131072,
             "output": 65536
-          },
-          "options": {
-            "provider": {}
-          }
-        },
-        "tencent/hy3:free": {
-          "name": "Tencent Hy3 Free",
-          "limit": {
-            "context": 131072,
-            "output": 32768
-          },
-          "options": {
-            "provider": {}
-          }
-        },
-        "z-ai/glm-5.3-flash:free": {
-          "name": "GLM 5.3 Flash Free",
-          "limit": {
-            "context": 131072,
-            "output": 32768
-          },
-          "options": {
-            "provider": {}
-          }
-        },
-        "qwen/qwen3.8-flash:free": {
-          "name": "Qwen 3.8 Flash Free",
-          "limit": {
-            "context": 131072,
-            "output": 32768
-          },
-          "options": {
-            "provider": {}
           }
         }
       }

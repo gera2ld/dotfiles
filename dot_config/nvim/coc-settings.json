@@ -46,6 +46,7 @@
     "https://json.schemastore.org": true,
     "https://unpkg.com": true,
     "https://opencode.ai": true,
-    "https://models.dev": true
+    "https://models.dev": true,
+    "https://shadcn-vue.com": true
   }
 }
