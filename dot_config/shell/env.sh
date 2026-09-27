@@ -27,6 +27,13 @@ export EDITOR="nvim"
 alias vi=nvim
 # }}}
 
+# Git {{{
+alias g=git
+alias t=tig
+alias ts='tig --submodule=diff'
+alias ta='tig --submodule=diff --all'
+# }}}
+
 # Mise {{{
 alias m=mise
 alias mx='mise exec --'
@@ -51,6 +58,7 @@ __add_path "$GOBIN"
 # }}}
 
 # tmux {{{
+export TMUX_PLUGIN_MANAGER_PATH=$HOME/.tmux/plugins
 alias tmux='tmux -2'
 # }}}
 
@@ -61,6 +69,22 @@ export FZF_CTRL_T_OPTS="--info=inline --preview='bat -r :100 {}'"
 [ -n "$__SHELL" ] && eval "$(fzf --$__SHELL)"
 # }}}
 
+# Starship {{{
+eval "$(mise exec -- starship init $__SHELL)"
+function set_win_title(){ echo -ne "\033]0; $(basename "$PWD") \007"; }
+if [ $__SHELL = 'zsh' ]; then
+  precmd_functions+=(set_win_title)
+else
+  starship_precmd_user_func="set_win_title"
+fi
+# }}}
+
 # Zoxide {{{
 [ -n "$__SHELL" ] && eval "$(mise exec -- zoxide init $__SHELL)"
+# }}}
+
+# Wezterm {{{
+if [ -n "$WEZTERM_PANE" ]; then
+  source ~/.local/share/wezterm/vte.sh
+fi
 # }}}
