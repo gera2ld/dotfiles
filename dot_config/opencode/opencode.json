@@ -3,6 +3,18 @@
   "permissions": [
     { "action": "shell", "resource": "pw *", "effect": "ask" }
   ],
+  "mcp": {
+    "servers": {
+      "silverbullet": {
+        "type": "local",
+        "command": ["npx", "-y", "sb-mcp"],
+        "environment": {
+          "SB_URL": "{env:SB_URL}",
+          "SB_AUTH_TOKEN": "{env:SB_AUTH_TOKEN}"
+        }
+      }
+    }
+  },
   "providers": {
     "prism": {
       "name": "Prism",
