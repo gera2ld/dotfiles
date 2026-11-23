@@ -51,6 +51,8 @@
     "https://shadcn-svelte.com": true,
     "https://www.unpkg.com": true,
     "https://ui.shadcn.com": true,
-    "https://raw.githubusercontent.com": true
+    "https://raw.githubusercontent.com": true,
+    "https://cairnsecurity.com": true,
+    "https://openpresentation.org": true
   }
 }
