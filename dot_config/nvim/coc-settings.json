@@ -53,6 +53,7 @@
     "https://ui.shadcn.com": true,
     "https://raw.githubusercontent.com": true,
     "https://cairnsecurity.com": true,
-    "https://openpresentation.org": true
+    "https://openpresentation.org": true,
+    "https://spec.openapis.org": true
   }
 }

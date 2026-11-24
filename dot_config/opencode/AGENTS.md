@@ -2,7 +2,7 @@
 
 - Version Control
   - Run `jj root` to detect whether the project is managed by `jj`. If so, commit with `jj commit -m "<message>"`.
-  - Always use a one-line message following Conventional Commits with no trailers.
+  - Use a single-line Conventional Commits subject with no body. A single issue-closing footer line such as `Fixes #123` is allowed.
 - Package Manager
   - Check which lockfile exists (`bun.lock` or `pnpm-lock.yaml`), and use the corresponding package manager.
 - TypeScript
